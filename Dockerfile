@@ -6,6 +6,9 @@ WORKDIR /app
 # Copy source code
 COPY . .
 
+# ✅ Fix permission denied error
+RUN chmod +x mvnw
+
 # Build the application using Maven Wrapper
 RUN ./mvnw clean package -DskipTests
 
