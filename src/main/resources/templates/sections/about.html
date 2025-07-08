@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Me - Akshay Jadhav</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Space Background with Stars */
+        body {
+          background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+          overflow-x: hidden;
+        }
+
+        .stars, .stars2, .stars3 {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-repeat: repeat;
+          background-position: 0 0;
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        .stars {
+          background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+          animation: moveStars 100s linear infinite;
+        }
+
+        .stars2 {
+          background-image: url('https://www.transparenttextures.com/patterns/tiny-grid.png');
+          animation: moveStars 150s linear infinite;
+        }
+
+        @keyframes moveStars {
+          from { background-position: 0 0; }
+          to { background-position: -10000px 5000px; }
+        }
+
+        /* Float effect */
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+
+        /* Fade In */
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+            transform: none;
+          }
+        }
+
+        .animate-fadeIn {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+
+<body class="text-white font-sans relative overflow-hidden">
+<!-- Star Layers -->
+<div class="stars"></div>
+<div class="stars2"></div>
+
+<div th:fragment="about">
+    <section class="max-w-7xl mx-auto px-6 py-24 relative z-10 animate-fadeIn">
+        <!-- Title -->
+        <h2 class="text-5xl font-extrabold text-center mb-4 tracking-tight animate-text-glow flex items-center justify-center gap-4">
+            <img
+                    src="https://img.icons8.com/?size=100&id=81021&format=png&color=000000"
+                    alt="About Me Icon"
+                    class="w-12 h-12 animate-float bg-white rounded-full p-1"
+            />
+            <span class="text-white">About Me</span>
+        </h2>
+        <div class="h-1 w-24 bg-purple-500 mx-auto mb-12 rounded-full animate-pulse"></div>
+        <!-- Grid Layout -->
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <!-- Text -->
+            <div class="space-y-6">
+                <p class="text-lg text-black leading-relaxed">
+                    I'm <span class="font-semibold">Akshay Jadhav</span>, a B.E. Computer Science Engineering student and passionate Java Full-Stack Developer. I specialize in building robust web applications using Java, Spring Boot, MySQL, and modern front-end technologies like HTML, CSS, JavaScript, and React. I'm driven by a love for clean code, smart architecture, and solving real-world tech challenges.
+                </p>
+
+                <p class="text-lg text-black-400">
+                    Skilled in Java, Spring Boot, React, and Tailwind — I strive to build interfaces that feel as good as they function.
+                </p>
+                <a href="http://t.me/Ak5h4y_0"
+                   class="inline-block bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-indigo-600 hover:to-purple-500 px-7 py-3 rounded-full text-white font-medium shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-400">
+                    Let's Connect
+                </a>
+
+                <!-- Instagram -->
+                <div class="mt-4">
+                    <a href="https://www.instagram.com/gau_thun/" target="_blank"
+                       class="inline-flex items-center gap-2 text-purple-300 hover:text-purple-200 transition-colors duration-300">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.5...Z" />
+                        </svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="flex justify-center md:justify-end relative">
+                <img
+                        src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSl5S3-M8Ml5RdQBplrfgkroU0omu4uKe-Ewt6ZjcC5G858U-PfnDzk8_NswNGGoNSJcGspQefTxwAN8CXdymTiGQ"
+                        alt="Akshay Jadhav"
+                        class="rounded-full w-72 h-72 object-cover border-4 border-purple-500 shadow-[0_0_40px_rgba(168,85,247,0.6)] animate-float"
+                />
+                <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-purple-500 blur-3xl opacity-20 z-[-1] rounded-full"></div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

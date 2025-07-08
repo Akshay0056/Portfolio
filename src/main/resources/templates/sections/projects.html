@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects - Akshay Jadhav</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glass UI */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Rocket Animation */
+        @keyframes rocketFire {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) rotate(-10deg) scale(1.05);
+            }
+            100% {
+                transform: translateY(-20px) rotate(-25deg) scale(1);
+            }
+        }
+
+        .rocket-blast {
+            animation: rocketFire 1.6s ease-out forwards;
+            display: inline-block;
+            font-size: 2.8rem;
+        }
+
+        /* Background Layer */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, #1a1a2e 0%, #0f0c29 100%);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.1;
+            z-index: -1;
+
+            @keyframes gradientShift {
+    0% {
+    background-position: 0% 50%;
+    }
+    50% {
+    background-position: 100% 50%;
+    }
+    100% {
+    background-position: 0% 50%;
+    }
+    }
+
+    .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+    }
+        }
+
+        @keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+
+    </style>
+</head>
+
+<body class="text-white font-sans relative">
+
+<!-- Project List Section -->
+<section id="project-list" class="min-h-screen max-w-7xl mx-auto px-6 py-24">
+    <h2 class="text-5xl font-extrabold text-center mb-10 tracking-tight">
+        <span class="rocket-blast">🚀</span>
+        <span class="ml-3">Featured
+    <span class="bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 bg-clip-text text-transparent animate-gradient ml-2">
+      Projects
+    </span>
+  </span>
+    </h2>
+
+    <div class="h-1 w-24 bg-purple-500 mx-auto mb-12 rounded-full animate-pulse"></div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Project 1 -->
+        <div onclick="openProject('project1')" class="cursor-pointer glass rounded-2xl shadow-xl p-5 transition hover:scale-105 hover:shadow-purple-500/30 duration-300">
+            <img src="https://previews.123rf.com/images/priocr777/priocr7772002/priocr777200200009/140420395-abstract-chat-app-icon-design-icon-chat-dialogue-and-discussion-vector-illustration.jpg" alt="Project 1" class="rounded-xl mb-4 w-full h-44 object-cover">
+            <div class="space-y-2">
+                <h3 class="text-2xl font-extrabold tracking-tight mb-2">
+  <span class="bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-500 bg-clip-text text-transparent animate-gradient">
+    Short-Chat App
+  </span>
+                </h3>
+
+                <div class="flex gap-2">
+                    <span class="text-xs px-2 py-1 bg-purple-600/20 rounded-full text-purple-300">JavaScript</span>
+                    <span class="text-xs px-2 py-1 bg-indigo-600/20 rounded-full text-indigo-300"> React </span>
+                </div>
+                <p class="text-sm text-gray-400">A real-time chat application built with React, Tailwind CSS, and JavaScript, designed for seamless user communication with a clean, responsive UI..</p>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div onclick="openProject('project2')" class="cursor-pointer glass rounded-2xl shadow-xl p-5 transition hover:scale-105 hover:shadow-purple-500/30 duration-300">
+            <img src="https://akshayj-portfolio.s3.us-east-1.amazonaws.com/icon.png" alt="Project 2" class="rounded-xl mb-4 w-full h-44 object-cover">
+            <div class="space-y-2">
+                <h3 class="text-2xl font-extrabold tracking-tight mb-2">
+  <span class="bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-500 bg-clip-text text-transparent animate-gradient">
+    ElectroFree
+  </span>
+                </h3>
+
+                <div class="flex gap-2">
+                    <span class="text-xs px-2 py-1 bg-red-600/20 rounded-full text-red-300">Python</span>
+                    <span class="text-xs px-2 py-1 bg-blue-600/20 rounded-full text-blue-300">Flask</span>
+                    <span class="text-xs px-2 py-1 bg-green-600/20 rounded-full text-green-300">ML</span>
+                </div>
+                <p class="text-sm text-gray-400">An ML-based tool to detect stress levels from text.</p>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div onclick="openProject('project3')" class="cursor-pointer glass rounded-2xl shadow-xl p-5 transition hover:scale-105 hover:shadow-purple-500/30 duration-300">
+            <img src="https://media.istockphoto.com/id/1445426863/vector/chat-bot-vector-logo-design-concept.jpg?s=612x612&w=0&k=20&c=XDdfzS4lNW9yxQ0BQGZq9KMLL4bJ8ywXlYdAhBSuoCA=" alt="Project 3" class="rounded-xl mb-4 w-full h-44 object-cover">
+            <div class="space-y-2">
+                <h3 class="text-2xl font-extrabold tracking-tight mb-2">
+  <span class="bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-500 bg-clip-text text-transparent animate-gradient">
+   Chat-Bot
+  </span>
+                <div class="flex gap-2">
+                    <span class="text-xs px-2 py-1 bg-yellow-600/20 rounded-full text-yellow-300">HTML</span>
+                    <span class="text-xs px-2 py-1 bg-gray-600/20 rounded-full text-gray-300">Basic</span>
+                </div>
+                <p class="text-sm text-gray-400">A printable class timetable using basic HTML table tags.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Detail Sections (same as before) -->
+<section id="project1" class="hidden min-h-screen max-w-4xl mx-auto px-6 py-24">
+    <button onclick="goBack()" class="mb-6 text-purple-400 hover:underline">← Back to Projects</button>
+
+    <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 bg-clip-text text-transparent animate-gradient">
+        Online Chat Applicaton
+    </h2>
+    <img src="https://previews.123rf.com/images/priocr777/priocr7772002/priocr777200200009/140420395-abstract-chat-app-icon-design-icon-chat-dialogue-and-discussion-vector-illustration.jpg/800x400" alt="Project 1" class="rounded-xl mb-6 w-full">
+    <div class="text-lg text-gray-300 space-y-2">
+        <p>
+            A real-time chat application built using <strong>React</strong>, <strong>Tailwind CSS</strong>, and <strong>JavaScript</strong>, designed with a fully responsive dark mode UI and smooth animations.
+        </p>
+        <p>
+            The app uses <strong>Firebase Realtime Database</strong> for storing and syncing messages instantly, and is deployed on <strong>Firebase Hosting</strong> for fast and secure delivery.
+        </p>
+
+        <ul class="list-disc list-inside space-y-1">
+            <li>🔁 Real-time messaging using Firebase</li>
+            <li>🌙 Dark mode design with Tailwind CSS</li>
+            <li>📱 Fully responsive on all screen sizes</li>
+            <li>🚀 Deployed on Firebase Hosting</li>
+            <li>📦 Clean and modular React components</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <a href="https://chatapp-2a78b.firebaseapp.com/" class="text-purple-400 hover:underline mr-4">Live Demo</a>
+        <a href="#" class="text-gray-400 hover:underline"> </a>
+    </div>
+</section>
+
+<section id="project2" class="hidden min-h-screen max-w-4xl mx-auto px-6 py-24">
+    <button onclick="goBack()" class="mb-6 text-purple-400 hover:underline">← Back to Projects</button>
+    <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 bg-clip-text text-transparent animate-gradient">
+        ElectroFree
+    </h2>
+
+
+    <img src="https://via.placeholder.com/800x400" alt="Project 2" class="rounded-xl mb-6 w-full">
+    <div class="text-lg text-gray-300 space-y-2">
+        <p>
+            A web-based stress and sentiment detection system built with <strong>Flask</strong> and <strong>Machine Learning</strong>. It uses the <strong>Random Forest</strong> algorithm to analyze user input and predict emotional stress levels in real-time.
+        </p>
+        <p>
+            The app applies <strong>Natural Language Processing (NLP)</strong> techniques and offers a responsive, clean UI. It's deployed on <strong>Render</strong> or <strong>Heroku</strong> for smooth performance and accessibility.
+        </p>
+
+        <ul class="list-disc list-inside space-y-1">
+            <li>🧠 Real-time stress prediction using Random Forest</li>
+            <li>⌨️ Live user input with NLP-based analysis</li>
+            <li>💻 Built with Flask for both frontend & backend</li>
+            <li>🎯 Clean and responsive UI</li>
+            <li>🚀 Deployed on Render</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <a href="https://gadget-addiction.onrender.com" class="text-purple-400 hover:underline mr-4">Live Demo</a>
+        <a href="https://github.com/Akshay0056/gadget-addiction" class="text-gray-400 hover:underline">GitHub</a>
+    </div>
+</section>
+
+<section id="project3" class="hidden min-h-screen max-w-4xl mx-auto px-6 py-24">
+    <button onclick="goBack()" class="mb-6 text-purple-400 hover:underline">← Back to Projects</button>
+
+
+    <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 bg-clip-text text-transparent animate-gradient">
+        Chat_BOT
+    </h2>
+    <img src="https://via.placeholder.com/800x400" alt="Project 3" class="rounded-xl mb-6 w-full">
+    <p class="text-lg text-gray-300">
+        A static class timetable created using pure HTML with no CSS dependency. Ideal for printing or simple deployments.
+    </p>
+    <div class="mt-4">
+        <a href="https://chat-bot-xlxz.onrender.com/" class="text-purple-400 hover:underline mr-4">Demo</a>
+        <a href="#" class="text-gray-400 hover:underline">Code</a>
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+
+    function openProject(id) {
+        document.getElementById("project-list").classList.add("hidden");
+        document.querySelectorAll("section[id^='project']").forEach(section => {
+            section.id === id
+                ? section.classList.remove("hidden")
+                : section.classList.add("hidden");
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+        document.querySelectorAll("section[id^='project']").forEach(section => {
+            section.classList.add("hidden");
+        });
+        document.getElementById("project-list").classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

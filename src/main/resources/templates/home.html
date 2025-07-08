@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Akshay Jadhav</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CDN Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Urbanist', 'sans-serif'],
+              },
+              colors: {
+                neon: '#38bdf8',
+              },
+              boxShadow: {
+                neon: '0 0 15px #38bdf8',
+              },
+            },
+          },
+        };
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Space Background */
+        .space-bg {
+          background: black;
+          overflow: hidden;
+        }
+
+        .stars-layer {
+          position: absolute;
+          width: 300%;
+          height: 300%;
+          background-image: radial-gradient(white 1px, transparent 1px);
+          background-size: 3px 3px;
+          animation: stars-scroll 120s linear infinite;
+          opacity: 0.08;
+          z-index: -2;
+        }
+
+        .nebula-layer {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background:
+            radial-gradient(circle at 30% 40%, #38bdf855 0%, transparent 60%),
+            radial-gradient(circle at 70% 60%, #9333ea66 0%, transparent 60%);
+          filter: blur(120px);
+          z-index: -1;
+          animation: nebula-pulse 12s ease-in-out infinite alternate;
+          opacity: 0.4;
+        }
+
+        @keyframes stars-scroll {
+          from {
+            transform: translateY(0);
+          }
+          to {
+            transform: translateY(-1000px);
+          }
+        }
+
+        @keyframes nebula-pulse {
+          0% {
+            opacity: 0.3;
+            filter: blur(100px);
+          }
+          100% {
+            opacity: 0.5;
+            filter: blur(130px);
+          }
+        }
+
+        /* Custom Cursor */
+        #cursor {
+          width: 12px;
+          height: 12px;
+          background-color: #38bdf8;
+          border-radius: 9999px;
+          position: fixed;
+          pointer-events: none;
+          transform: translate(-50%, -50%);
+          transition: transform 0.1s ease;
+          mix-blend-mode: difference;
+          z-index: 50;
+        }
+    </style>
+</head>
+
+<body class="relative font-sans text-white bg-black overflow-x-hidden">
+
+<!-- 🌌 Animated Space Background -->
+<div class="fixed inset-0 z-0 space-bg pointer-events-none">
+    <div class="stars-layer"></div>
+    <div class="nebula-layer"></div>
+</div>
+
+<!-- 🖱️ Custom Cursor -->
+<div id="cursor"></div>
+
+<!-- Loader Fragment -->
+<div th:replace="~{fragments/loader :: loader}"></div>
+
+<!-- Header Fragment -->
+<div th:replace="~{fragments/header :: site-header}"></div>
+
+<!-- 🌠 Scrollable Content -->
+<section id="home" class="relative z-10 min-h-screen flex items-center justify-center px-6 pt-24 text-center">
+    <div class="max-w-4xl mx-auto space-y-10">
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-wide">
+           Hey I'm
+            <span class="bg-gradient-to-r from-neon via-purple-400 to-pink-500 bg-clip-text text-transparent animate-pulse">
+        Akshay Jadhav
+      </span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-xl mx-auto leading-relaxed">
+            A developer exploring the universe of <span class="text-neon">clean code</span>,
+            performance, and aesthetic design.
+        </p>
+        <div class="flex justify-center pt-4">
+            <img
+                    src="https://i.gifer.com/origin/da/dac535ed5a20a1eef613e265f195505f_w200.webp"
+                    alt="Akshay Jadhav"
+                    class="w-32 h-32 rounded-full border-4 border-neon shadow-neon object-cover"
+            />
+        </div>
+        <div class="flex justify-center gap-6 pt-6">
+            <a
+                    href="/projects"
+                    class="bg-neon text-black font-bold px-6 py-3 rounded-full hover:shadow-neon transition"
+            >
+                🚀 Projects
+            </a>
+            <a
+                    href="https://akshayj-portfolio.s3.us-east-1.amazonaws.com/resume.pdf"
+                    download="Akshay_Jadhav_Resume.pdf"
+                    class="border border-neon text-neon font-bold px-6 py-3 rounded-full hover:bg-neon hover:text-black transition flex items-center justify-center gap-2"
+            >
+                <i class="fas fa-download"></i> Download CV
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Custom Cursor JS -->
+<script>
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+</script>
+
+<!-- Main JS -->
+<script src="/js/script.js"></script>
+</body>
+</html>

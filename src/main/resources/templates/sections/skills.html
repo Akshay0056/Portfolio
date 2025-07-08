@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skills & Achievements - Akshay Jadhav</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* ========== Animations ========== */
+        @keyframes fadeIn {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fireFloat {
+          0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+          50% { transform: translateY(-8px) rotate(-2deg); opacity: 0.85; }
+        }
+        @keyframes flicker {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.6; }
+        }
+        @keyframes crazyHover {
+          0% { transform: scale(1) rotate(0); box-shadow: 0 0 10px #ef4444; }
+          50% { transform: scale(1.1) rotate(5deg); box-shadow: 0 0 25px #f87171; }
+          100% { transform: scale(1) rotate(-3deg); box-shadow: 0 0 10px #ef4444; }
+        }
+        @keyframes glowPulse {
+          0%, 100% { box-shadow: 0 0 10px rgba(234, 179, 8, 0.4); }
+          50% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.8); }
+        }
+
+        /* ========== Custom Classes ========== */
+        .animate-fadeIn { animation: fadeIn 0.9s ease-in-out both; }
+        .fire-emoji {
+          animation: fireFloat 2s ease-in-out infinite, flicker 0.2s infinite;
+          font-size: 2.5rem;
+          color: #f97316;
+          text-shadow: 0 0 10px #facc15, 0 0 20px #f97316;
+        }
+        .glass {
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .crazy-hover:hover {
+          animation: crazyHover 0.6s ease-in-out;
+        }
+        .glow-animate {
+          animation: glowPulse 2s infinite;
+        }
+
+        /* ========== Background Effects ========== */
+        .floating-particles::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 30% 30%, rgba(255, 0, 0, 0.2), transparent 60%),
+                      radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.1), transparent 60%);
+          background-size: cover;
+          z-index: 0;
+          pointer-events: none;
+          animation: backgroundFloat 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundFloat {
+          0% { background-position: 30% 30%, 70% 70%; }
+          100% { background-position: 32% 28%, 68% 72%; }
+        }
+
+        .floating-particles::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient(circle, rgba(255, 0, 0, 0.04) 1px, transparent 1px);
+          background-size: 40px 40px;
+          opacity: 0.15;
+          z-index: 0;
+          pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-950 text-white font-sans relative overflow-x-hidden">
+<div class="floating-particles absolute inset-0 z-0"></div>
+<div th:fragment="skills-and-achievements" class="relative z-10">
+
+    <!-- Skills Section -->
+    <section class="max-w-6xl mx-auto px-6 py-24 animate-fadeIn relative z-10">
+        <h2 class="text-5xl font-extrabold text-center mb-4 tracking-tight">
+            <span class="fire-emoji">🔥</span>
+            <span class="ml-2 text-red-400">Skills</span>
+        </h2>
+        <div class="h-1 w-24 bg-red-500 mx-auto mb-12 rounded-full animate-pulse"></div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 text-center relative z-10">
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">HTML</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">CSS</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">JavaScript</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">Tailwind CSS</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">Spring Boot</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">Python</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">Flask</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">MySQL</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">Git & GitHub</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">REST APIs</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">Machine Learning</div>
+            <div class="glass p-4 rounded-xl crazy-hover transition duration-300">React</div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="max-w-5xl mx-auto px-6 pb-24 space-y-10 animate-fadeIn relative z-10">
+        <h2 class="text-5xl font-extrabold text-center mb-4 tracking-tight">
+            🏅 My <span class="text-yellow-400">Achievements</span>
+        </h2>
+        <div class="h-1 w-24 bg-yellow-400 mx-auto mb-12 rounded-full animate-pulse"></div>
+
+        <div class="space-y-6">
+            <div class="glass p-6 rounded-2xl glow-animate shadow-lg hover:scale-105 hover:shadow-yellow-500/30 transition-all duration-300 animate-fadeIn">
+                <a href="https://drive.google.com/file/d/17V_DQyHZN8xeliLrk2zl--Yxvdmy8det/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <h3 class="text-2xl font-semibold text-yellow-300 hover:underline">
+                        🏆 Technical Paper Presentation 2024 Winner
+                    </h3>
+                </a>
+                <p class="text-gray-400 mt-2">
+                    Won 1st place in a Technical Paper Presentation with 60+ participants.
+                </p>
+            </div>
+
+            <div class="glass p-6 rounded-2xl glow-animate shadow-lg hover:scale-105 hover:shadow-yellow-500/30 transition-all duration-300 animate-fadeIn">
+                <a href="#" target="_blank" class="block">
+                    <h3 class="text-2xl font-semibold text-yellow-300 hover:underline">📜 Spring Boot Pro Certificate</h3>
+                    <p class="text-gray-400 mt-2">Completed an advanced Spring Boot course with practical microservice projects and deployment training.</p>
+                </a>
+            </div>
+
+
+            <div class="glass p-6 rounded-2xl glow-animate shadow-lg hover:scale-105 hover:shadow-yellow-500/30 transition-all duration-300 animate-fadeIn">
+                <a href="https://github.com/Akshay0056/" target="_blank" rel="noopener noreferrer">
+                    <h3 class="text-2xl font-semibold text-yellow-300">💻 Open Source Contributor</h3>
+                </a>
+                <p class="text-gray-400 mt-2">
+                    Contributed to multiple GitHub repositories with bug fixes, documentation improvements, and feature enhancements.
+                </p>
+            </div>
+
+        </div>
+    </section>
+</div>
+</body>
+</html>

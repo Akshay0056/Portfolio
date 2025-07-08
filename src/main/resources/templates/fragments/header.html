@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="site-header">
+
+    <!-- Tailwind & Google Font -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+              theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Urbanist', 'sans-serif'],
+              },
+              colors: {
+                glass: 'rgba(17, 24, 39, 0.6)',
+                neon: '#38bdf8',
+                lightNeon: '#7dd3fc',
+              },
+              boxShadow: {
+                neon: '0 0 15px #38bdf8',
+              },
+            },
+          },
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-glass backdrop-blur-xl border-b border-white/10 shadow-md font-sans">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <div class="text-3xl font-extrabold tracking-widest text-white hover:text-neon transition duration-300">
+                A.<span class="text-neon">J.</span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex gap-10 text-white font-medium tracking-wide">
+                <a href="/about" class="hover:text-neon transition-all duration-300">About</a>
+                <a href="/projects" class="hover:text-neon transition-all duration-300">Projects</a>
+                <a href="/skills" class="hover:text-neon transition-all duration-300">Achievements</a>
+                <a href="/contact" class="hover:text-neon transition-all duration-300">Contact</a>
+            </nav>
+
+            <!-- Hamburger for Mobile -->
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="focus:outline-none">
+                    <svg class="w-8 h-8 text-white transition-transform transform hover:scale-110" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Animated) -->
+        <div id="mobile-menu"
+             class="lg:hidden hidden flex flex-col bg-glass backdrop-blur-lg px-6 py-4 text-white border-t border-white/10 animate-fadeIn">
+            <a href="/about" class="py-2 hover:text-neon transition">About</a>
+            <a href="/projects" class="py-2 hover:text-neon transition">Projects</a>
+            <a href="/skills" class="py-2 hover:text-neon transition">Achievements</a>
+            <a href="/contact" class="py-2 hover:text-neon transition">Contact</a>
+        </div>
+
+        <style>
+            @keyframes fadeIn {
+              0% {
+                opacity: 0;
+                transform: translateY(-10px);
+              }
+
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            .animate-fadeIn {
+              animation: fadeIn 0.3s ease-in-out;
+            }
+        </style>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const toggle = document.getElementById('menu-toggle');
+              const menu = document.getElementById('mobile-menu');
+
+              toggle.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+              });
+            });
+        </script>
+    </header>
+
+</th:block>
+</html>
