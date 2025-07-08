@@ -1,17 +1,22 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:17-jdk-slim
+# Stage 1: Build the app
+FROM eclipse-temurin:17-jdk-jammy AS build
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the jar file from target to /app/app.jar
-COPY target/portfolio-0.0.1-SNAPSHOT.jar app.jar
+# Copy source code
+COPY . .
 
-# Tell Spring Boot to listen on the correct port
-ENV PORT 8080
+# Build the application using Maven Wrapper
+RUN ./mvnw clean package -DskipTests
 
-# Expose port for Render (will be overridden by $PORT)
+# Stage 2: Run the app
+FROM eclipse-temurin:17-jdk-jammy
+
+WORKDIR /app
+
+# Copy the built jar from the build stage
+COPY --from=build /app/target/Portfolio-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
 
-# Run the jar file
 CMD ["java", "-jar", "app.jar"]
