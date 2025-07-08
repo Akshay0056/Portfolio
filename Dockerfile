@@ -1,23 +1,21 @@
 # Stage 1: Build the app
-FROM eclipse-temurin:17-jdk-jammy AS build
+FROM eclipse-temurin:21-jdk-jammy AS build
 
 WORKDIR /app
 
-# Copy source code
 COPY . .
 
-# ✅ Fix permission denied error
+# Fix permission for mvnw
 RUN chmod +x mvnw
 
-# Build the application using Maven Wrapper
+# Build the application
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run the app
-FROM eclipse-temurin:17-jdk-jammy
+FROM eclipse-temurin:21-jdk-jammy
 
 WORKDIR /app
 
-# Copy the built jar from the build stage
 COPY --from=build /app/target/Portfolio-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
